@@ -57,4 +57,4 @@ class Predictor(BasePredictor):
             depth_bw_path = "/tmp/depth_bw.png"
             plt.imsave(depth_bw_path, depth_pred, cmap='gray')
 
-            return depth_bw_path
+            return Path(depth_bw_path)
