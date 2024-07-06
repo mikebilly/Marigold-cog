@@ -1,0 +1,16 @@
+build:
+  gpu: true
+  cuda: "12.1"
+  system_packages:
+    - "libgl1-mesa-glx"
+  python_version: "3.10.12"
+  python_packages:
+    - "accelerate==0.32.1"
+    - "diffusers==0.29.2"
+    - "matplotlib==3.7.1"
+    - "scipy==1.11.4"
+    - "torch==2.2.0+cu121"
+    - "transformers==4.41.2"
+    - "xformers==0.0.21"
+    
+predict: "predict.py:Predictor"

@@ -1,0 +1,39 @@
+name: Push Marigold Model to Replicate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  push_to_replicate:
+    name: Push to Replicate
+    runs-on: ubuntu-latest-16-cores
+    steps:
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          docker-images: false
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up CUDA
+        uses: Jimver/cuda-toolkit@v0.2.14
+        with:
+          cuda: '12.1.0'
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-glx
+
+      - name: Setup Cog
+        uses: replicate/setup-cog@0b80adb018e90cd503e58e5d941301d9cc038ed9
+        with:
+          token: ${{ secrets.REPLICATE_API_TOKEN }}
+
+      - name: Push to Replicate
+        run: cog push r8.im/mikebilly/Marigold
