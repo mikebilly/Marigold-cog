@@ -12,5 +12,6 @@ build:
     - "torch==2.0.1"
     - "transformers==4.41.2"
     - "xformers==0.0.21"
+    - "torchvision==0.15.2"
     
 predict: "predict.py:Predictor"
