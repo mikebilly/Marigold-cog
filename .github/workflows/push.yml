@@ -9,11 +9,11 @@ on:
 jobs:
   push_to_replicate:
     name: Push to Replicate
-    runs-on: ubuntu-latest-xlarge
+    runs-on: ubuntu-latest
     steps:
       - name: Free disk space
         uses: jlumbroso/free-disk-space@main
-        
+
       - name: Checkout
         uses: actions/checkout@v4
 
