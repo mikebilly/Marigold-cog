@@ -9,14 +9,11 @@ on:
 jobs:
   push_to_replicate:
     name: Push to Replicate
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-xlarge
     steps:
       - name: Free disk space
-        uses: jlumbroso/free-disk-space@v1.3.1
-        with:
-          tool-cache: false
-          docker-images: false
-
+        uses: jlumbroso/free-disk-space@main
+        
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -31,7 +28,7 @@ jobs:
           sudo apt-get install -y libgl1-mesa-glx
 
       - name: Setup Cog
-        uses: replicate/setup-cog@0b80adb018e90cd503e58e5d941301d9cc038ed9
+        uses: replicate/setup-cog@v2
         with:
           token: ${{ secrets.REPLICATE_API_TOKEN }}
 
