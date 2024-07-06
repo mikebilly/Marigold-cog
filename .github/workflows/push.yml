@@ -13,19 +13,12 @@ jobs:
     steps:
       - name: Free disk space
         uses: jlumbroso/free-disk-space@main
-
+        with:
+          tool-cache: false
+          docker-images: false
+          
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up CUDA
-        uses: Jimver/cuda-toolkit@v0.2.16
-        with:
-          cuda: '12.1.0'
-
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgl1-mesa-glx
 
       - name: Setup Cog
         uses: replicate/setup-cog@v2
